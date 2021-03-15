@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link href="{{ url_for('static', filename='css/eCommerceStyle.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+
+<br><br><br>
+
+<style>
+body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
+
+.m-b-20 {margin-bottom: 20px}
+.quote {position: relative;}
+.quote blockquote {
+ padding: 0px;
+ border: 0;
+ margin: 0;
+ font-size: 14px;
+ font-style: italic;
+ -webkit-border-radius: 8px;
+ -moz-border-radius: 8px;
+ -ms-border-radius: 8px;
+ border-radius: 8px;
+}
+.quote blockquote p {
+ color: #fff;
+ padding-top: 25px;
+ padding-bottom: 45px;
+ padding-left: 30px;
+ padding-right: 30px;
+}
+.quote blockquote:before {
+ content: "";
+ position: absolute;
+ top: 100%;
+ left: 90px;
+ width: 0;
+ height: 0;
+ border-top: 0.83333em solid #ccc;
+ border-right: 0.86667em solid transparent;
+}
+.quote.green blockquote {
+ background-color: #25576f;
+}
+.quote.green blockquote:before {
+ border-top-color: #25576f;
+}
+.quote.dark blockquote {
+ background-color: #555;
+}
+.quote.dark blockquote:before {
+ border-top-color: #555;
+}
+.quote-footer {
+ margin: 10px 0;
+}
+.quote-footer .quote-author-img img {
+ float: left;
+ max-width: 90px;
+ width: 90px;
+ height: 90px;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ -ms-border-radius: 50%;
+ border-radius: 50%;
+ margin-left: -5px;
+ margin-top: -40px;
+ position: relative;
+ z-index: 1;
+ padding: 5px;
+ background-color: #fff;
+}
+.quote-footer h4 {
+ font-size: 14px;
+ margin-bottom: 4px;
+}
+.quote-footer p {
+ font-weight: 400;
+ font-style: italic;
+ font-size: 14px;
+}
+</style>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <div class="container">
+
+
+        <div class="row" style="">
+
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+    	 <div class="well profile">
+                     <a href="/">
+            <!-- This is the header content. It contains Logo and links -->
+            <div id="logo">
+                <!-- <img src="logoImage.png" alt="sample logo"> -->
+                <!-- Company Logo text -->
+                KUBSU SPACE</div>
+        </a>
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <h2>{{prepod.name}}</h2>
+<!--                    <p><strong>О себе: </strong></p>-->
+<!--                    <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>-->
+                    <p>
+<!--                        <strong>Кафедра</strong>-->
+                        <span class="tags">{{' '.join(prepod.menu.split(' ')[:2])}}</span><br><span class="tags">{{' '+' '.join(prepod.menu.split(' ')[2:])}}</span>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                        <img style="max-height:200px;" id="test" alt="sample" src="{{ url_for('static', filename='images/prepods/')}}{{str(prepod.id)+'.'+prepod.image.split('.')[1]}}" alt="" class="img-responsive">
+<!--                        <figcaption class="ratings">-->
+<!--                            <p>Рейтинг-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                            <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<link href="{{ url_for('static', filename='css/eCommerceStyle.css') }}" rel="stylesheet" type="text/css">-->
+
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                 <span class="fa fa-star-o"></span>-->
+<!--                            </p>-->
+<!--                        </figcaption>-->
+                    </figure>
+                </div>
+            </div>
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis" style="margin:0 auto">
+                    {% if not prepod.view %}
+                    <h2><strong>0</strong></h2>
+                    <p><small>Посещений профиля</small></p>
+                    {% else %}
+                    <h2><strong>{{prepod.view}}</strong></h2>
+                    <p><small>Посещений профиля</small></p>
+                    {% endif %}
+<!--                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>-->
+                </div>
+<!--                <div class="col-xs-12 col-sm-4 emphasis">-->
+<!--                    <h2><strong>245</strong></h2>-->
+<!--                    <p><small>Отзывов</small></p>-->
+<!--                    <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Profile </button>-->
+<!--                </div>-->
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>{{len(prepod.feedbacks.all())}}</strong></h2>
+                    <p><small>Отзывов</small></p>
+                    <div class="btn-group dropup btn-block">
+<!--                      <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>-->
+<!--                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                        <span class="sr-only">Toggle Dropdown</span>-->
+                      </button>
+                      <ul class="dropdown-menu text-left" role="menu">
+                        <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+    	 </div>
+		</div>
+	</div>
+</div>
+<div> </div>
+<div class="container" style="max-width:515px;">
+<div class="row">
+<div class="col-md-12">
+    {% if not prepod.feedbacks.all() %}
+    <h4>Оставьте первый отзыв анонимно</h4>
+    {% else %}
+    <h4>Оставьте новый отзыв анонимно</h4>
+    {% endif %}
+    <form action="/feedback" method="post">
+        <div class="form-group">
+            <label>Сообщение:</label>
+            <textarea class="form-control" name="message" rows="3"></textarea>
+        </div>
+        <input hidden name="prepod" value="{{prepod.name}}">
+   <button type="submit" class="btn btn-info">Отправить</button>
+</form>
+</div>
+<div class="col-md-4"> </div> </div>
+</div>
+    <br>
+    <br>
+    <br>
+<section class="container" style="max-width:515px;">
+{%for i in prepod.feedbacks.all()[::-1]%}
+    <div class="row" >
+ <div class="col-md-12 m-b-20">
+
+      {% if i.id == 0 or i.id%2==0 %}
+         <div class="quote green" style="border-radius:12px;border: 3px solid black;">
+
+     {%else%}
+     <div class="quote dark" style="border-radius:12px;border: 3px solid black;">
+
+         {%endif%}
+ <blockquote>
+<p style="font-style:normal;word-wrap: break-word">{{i.body}}</p>
+ </blockquote>
+ </div>
+
+     </div>
+ <div class="quote-footer text-right">
+ <div class="quote-author-img">
+ <img src="https://bootstraptema.ru/snippets/icons/2016/mia/6.png" alt="Аватар пользователя">
+ </div>
+ <h4>Анонимный отзыв</h4>
+ <p>
+ <strong>{{'{}.{}.{}'.format(i.timestamp.day,i.timestamp.month,i.timestamp.year)}}</strong>
+ </p>
+ </div>
+ </div><!--Отзыв 1-->
+    </div> <!--завершение row-->
+    {%endfor%}
+<!-- <div class="col-md-4 m-b-20">-->
+<!-- <div class="quote green">-->
+<!-- <blockquote>-->
+<!-- <p>Согласна! Качество на высоте как и доступность в общем виде!</p>-->
+<!-- </blockquote>-->
+<!-- </div>-->
+<!-- <div class="quote-footer text-right">-->
+<!-- <div class="quote-author-img">-->
+<!-- <img src="https://bootstraptema.ru/snippets/icons/2016/mia/7.png" alt="Аватар пользователя">-->
+<!-- </div>-->
+<!-- <h4>Надя</h4>-->
+<!-- <p>-->
+<!-- <strong>Финансист</strong>-->
+<!-- </p>-->
+<!-- </div>-->
+<!-- </div>&lt;!&ndash;Отзыв 2&ndash;&gt;-->
+
+<!-- <div class="col-md-4 m-b-20">-->
+<!-- <div class="quote dark">-->
+<!-- <blockquote>-->
+<!--<p>И мне помогли от души! Респект за уважение к своей работе и тем кто её использует в своих целях!</p>-->
+<!-- </blockquote>-->
+<!-- </div>-->
+<!-- <div class="quote-footer text-right">-->
+<!-- <div class="quote-author-img">-->
+<!-- <img src="https://bootstraptema.ru/snippets/icons/2016/mia/8.png" alt="Аватар пользователя">-->
+<!-- </div>-->
+<!-- <h4>Елена</h4>-->
+<!-- <p>-->
+<!-- <strong>Менеджер</strong>-->
+<!-- </p>-->
+<!-- </div>-->
+<!-- </div>&lt;!&ndash;Отзыв 3&ndash;&gt;-->
+
+<!--</div>&lt;!&ndash;первая секция row&ndash;&gt;-->
+
+
+</section>
+</body>
+</html>

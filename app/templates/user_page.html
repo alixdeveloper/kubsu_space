@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{prepod.name}}</title>
+<link href="{{ url_for('static', filename='css/aboutPageStyle.css') }}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+<script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
+</head>
+
+<body>
+<!-- Header content -->
+<header>
+  <a href="/"><div class="profileLogo" >
+    <!-- Profile logo. Add a img tag in place of <span>. -->
+    <p class="logoPlaceholder" style="background: #007dc1;"><!-- <img src="logoImage.png" alt="sample logo"> --><span>На главную</span></p>
+  </div></a>
+  <div class="profilePhoto"> 
+    <!-- Profile photo --> 
+<!--    <img src="{{url_for('static', filename='images/profilephoto.png')}}" alt="sample"> </div>-->
+    <img src="{{url_for('static', filename='images/prepods/'+str(prepod.id)+'.jpg')}}"  alt="sample"> </div>
+  <!-- Identity details -->
+  <section class="profileHeader">
+    <h1>{{prepod.name}}</h1>
+    <h3>{{prepod.menu}}</h3>
+  <a href="/kaf/{{kafedra.id}}"><div class="profileLogo" >
+    <!-- Profile logo. Add a img tag in place of <span>. -->
+    <p class="" style="text-decoration:underline;font-size:1em;color: #007dc1;"><!-- <img src="logoImage.png" alt="sample logo"> --><span>Другие преподаватели</span></p>
+  </div></a>
+  <div class="profilePhoto">
+
+    <hr>
+      {%if prepod.about%}
+    <p>{{prepod.about}}</p>
+      {%else%}
+    <p>Подробная информация отсутствует. Добавьте её кнопкой ниже :)</p>
+
+      {%endif%}
+  </section>
+  <!-- Links to Social network accounts -->
+  <aside class="socialNetworkNavBar">
+    <div class="socialNetworkNav" >
+      <!-- Add a Anchor tag with nested img tag here --> 
+      <img id="addinfo" src="{{url_for('static', filename='images/social.png')}}" onclick="openandcloseForm()" alt="sample"> </div>
+  </aside>
+
+<div class="form-popup" id="myForm">
+  <form action="/correct" method="post" class="form-container">
+    <h1 style="margin-top:0;">Корректировка</h1>
+    <input type="hidden" name="user" value="{{prepod.id}}">
+    <label for="correct"><b>Что добавить/исправить?</b></label>
+    <textarea type="text" placeholder="Введите текст" name="correct" required maxlength="50000"></textarea>
+    <button type="submit" class="btn">Предложить исправление</button>
+  </form>
+</div>
+
+<script>
+function openandcloseForm() {
+  if (document.getElementById("myForm").style.display == "block"){
+    document.getElementById("myForm").style.display = "none";
+    document.getElementById("addinfo").src="{{url_for('static', filename='images/social.png')}}";
+
+} else{
+    document.getElementById("myForm").style.display = "block";
+    document.getElementById("addinfo").src="{{url_for('static', filename='images/oksocial.png')}}";
+                    }
+}
+</script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Кнопка, используемая для открытия контактной формы-фиксируется в нижней части страницы */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 280px;
+}
+
+/* Всплывающая форма-скрыта по умолчанию */
+.form-popup {
+  display: none;
+}
+
+/* Добавление стилей в контейнер форм */
+.form-container {
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Поля ввода полной ширины */
+.form-container input[type=text], .form-container input[type=password], .form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 5px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Когда входы получают фокус, сделайте что-нибудь */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Установите стиль для кнопки отправить/кнопка */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Добавьте красный цвет фона к кнопке отмена */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Добавьте некоторые эффекты наведения на кнопки */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+</header>
+<!-- content -->
+<section class="mainContent"> 
+  <!-- Previous experience details -->
+  <section class="section2">
+    <h2 class="sectionTitle">Отзывы студентов</h2>
+    <hr class="sectionTitleRule2">
+    <!-- First Title & company details  -->
+  </section>
+</section>
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+
+<br><br><br>
+
+<style>
+
+.m-b-20 {margin-bottom: 20px}
+.quote {position: relative;}
+.quote blockquote {
+ padding: 0px;
+ border: 0;
+ margin: 0;
+ font-size: 14px;
+ font-style: italic;
+ -webkit-border-radius: 8px;
+ -moz-border-radius: 8px;
+ -ms-border-radius: 8px;
+ border-radius: 8px;
+}
+.quote blockquote p {
+ color: #fff;
+ padding-top: 25px;
+ padding-bottom: 45px;
+ padding-left: 30px;
+ padding-right: 30px;
+}
+.quote blockquote:before {
+ content: "";
+ position: absolute;
+ top: 100%;
+ left: 90px;
+ width: 0;
+ height: 0;
+ border-top: 0.83333em solid #ccc;
+ border-right: 0.86667em solid transparent;
+}
+.quote.green blockquote {
+ background-color: #32c5d2;
+}
+.quote.green blockquote:before {
+ border-top-color: #32c5d2;
+}
+.quote.dark blockquote {
+ background-color: #32d263;
+}
+.quote.dark blockquote:before {
+ border-top-color: #32d263;
+}
+.quote-footer {
+ margin: 10px 0;
+}
+.quote-footer .quote-author-img img {
+ float: left;
+ max-width: 90px;
+ width: 90px;
+ height: 90px;
+ -webkit-border-radius: 50%;
+ -moz-border-radius: 50%;
+ -ms-border-radius: 50%;
+ border-radius: 50%;
+ margin-left: -5px;
+ margin-top: -40px;
+ position: relative;
+ z-index: 1;
+ padding: 5px;
+ background-color: #fff;
+}
+.quote-footer h4 {
+ font-size: 14px;
+ margin-bottom: 4px;
+}
+.quote-footer p {
+ font-weight: 400;
+ font-style: italic;
+ font-size: 14px;
+}
+body{margin: 0 auto!important;}
+</style>
+<div class="container" style="max-width:515px;">
+<div class="row">
+<div class="col-md-12">
+    {% if not prepod.feedbacks.all() %}
+    <h4>Оставьте первый отзыв анонимно</h4>
+    {% else %}
+    <h4>Оставьте новый отзыв анонимно</h4>
+    {% endif %}
+    <form action="/feedback" method="post">
+        <div class="form-group">
+            <label>Сообщение:</label>
+            <textarea class="form-control" required name="message" rows="3"></textarea>
+        </div>
+        <input hidden name="prepod" value="{{prepod.name}}">
+   <button type="submit" class="btn btn-info">Отправить</button>
+</form>
+</div>
+<div class="col-md-4"> </div> </div>
+</div>
+    <br>
+    <br>
+    <br>
+<section class="container" style="max-width:515px;">
+{%for i in prepod.feedbacks.all()[::-1]%}
+    <div class="row" >
+ <div class="col-md-12 m-b-20">
+
+      {% if i.id == 0 or i.id%2==0 %}
+         <div class="quote green" style="border-radius:20px;border: 3px solid white;">
+
+     {%else%}
+     <div class="quote dark" style="border-radius:20px;border: 3px solid white;">
+
+         {%endif%}
+ <blockquote>
+<p style="font-style:normal;word-wrap: break-word">{{i.body}}</p>
+ </blockquote>
+ </div>
+
+     </div>
+ <div style="margin-top: -10px;" class="quote-footer text-right">
+ <div class="quote-author-img">
+ <img  style="border: 2px solid #9c9c9c; width: 60px;height: 60px;" src="{{url_for('static', filename='images/anonim.png')}}" alt="Аватар пользователя">
+ </div>
+ <h4>Анонимный отзыв</h4>
+ <p>
+ <strong>{{'{}.{}.{}'.format(i.timestamp.day,i.timestamp.month,i.timestamp.year)}}</strong>
+ </p>
+ </div>
+ </div><!--Отзыв 1-->
+    </div> <!--завершение row-->
+    {%endfor%}
+    </section>
+
+<footer>
+    <p style="width:100%; text-align:center;" class="footerDisclaimer">Независимый сайт обратной связи о преподавателях КубГУ. Версия 2.00<br>По вопросам сайта и его содержимого: <a style="font-size: 14px; color: #686767" href="mailto:plisovalix@gmail.comsubject=Вопрос по сайту Kubsu.space">plisovalix@gmail.com</a></span></p>
+</footer>
+</body>
+</html>
